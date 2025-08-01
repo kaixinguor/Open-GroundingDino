@@ -363,6 +363,10 @@ def main(args):
             print("Removing: {}".format(filename))
             remove(filename)
 
+    # Clean up distributed training resources
+    if args.distributed:
+        torch.distributed.destroy_process_group()
+        print("Distributed process group destroyed successfully")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('DETR training and evaluation script', parents=[get_args_parser()])
