@@ -2,7 +2,7 @@
   "train": [
     {
       "root": "data/coco2017/images/train2017/",
-      "anno": "data/coco_2017/coco2017_train_odvg.jsonl",
+      "anno": "data/coco2017/coco2017_train_odvg.jsonl",
       "label_map": "config/coco2017_label_map.json",
       "dataset_mode": "odvg"
     }

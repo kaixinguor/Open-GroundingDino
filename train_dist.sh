@@ -1,14 +1,19 @@
 #!/bin/bash
-GPU_NUM=$1
-CFG=$2
-DATASETS=$3
-OUTPUT_DIR=$4
+# GPU_NUM=$1
+# CFG=$2
+# DATASETS=$3
+# OUTPUT_DIR=$4
+GPU_NUM=1
+CFG=config/cfg_coco.py
+DATASETS=config/datasets_od_example.json
+OUTPUT_DIR=output/od_example_train
+
 NNODES=${NNODES:-1}
 NODE_RANK=${NODE_RANK:-0}
 PORT=${PORT:-29500}
 MASTER_ADDR=${MASTER_ADDR:-"127.0.0.1"}
-PRETRAIN_MODEL_PATH=${PRETRAIN_MODEL_PATH:-"/path/to/groundingdino_swint_ogc.pth"}
-TEXT_ENCODER_TYPE=${TEXT_ENCODER_TYPE:-"/path/to/bert-base-uncased"}
+PRETRAIN_MODEL_PATH=${PRETRAIN_MODEL_PATH:-"weights/groundingdino_swint_ogc.pth"}
+TEXT_ENCODER_TYPE=${TEXT_ENCODER_TYPE:-"weights/bert"}
 echo "
 GPU_NUM = $GPU_NUM
 CFG = $CFG

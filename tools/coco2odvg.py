@@ -39,7 +39,8 @@ def coco2odvg(args):
     nms = {cat['id']:cat['name'] for cat in cats}
     metas = []
 
-    use_coco_idmap = (args.idmap == 'coco2017')
+    # use_coco_idmap = (args.idmap == 'coco2017') # don't need it for training, don't change 80 categories to 90 categories
+    use_coco_idmap = False
 
     for img_id, img_info in tqdm(coco.imgs.items()):
         ann_ids = coco.getAnnIds(imgIds=img_id)
@@ -81,7 +82,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser("coco to odvg format.", add_help=True)
     parser.add_argument("--input", '-i', default="data/coco2017/annotations/instances_train2017.json", type=str, help="input list name")
     parser.add_argument("--output", '-o', default="data/coco2017/coco2017_train_odvg.jsonl", type=str, help="output list name")
-    parser.add_argument("--idmap", default='coco', type=str, help="if coco2017 use the coco2017 idmap, otherwise keep labels as is.")
+    # parser.add_argument("--idmap", default='coco', type=str, help="if coco2017 use the coco2017 idmap, otherwise keep labels as is.")
     args = parser.parse_args()
 
     coco2odvg(args)
