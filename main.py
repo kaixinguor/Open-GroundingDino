@@ -84,6 +84,9 @@ def build_model_main(args):
 
 def main(args):
     
+    # Set CUDA memory allocation configuration to prevent memory growth
+    import os
+    os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
 
     utils.setup_distributed(args)
     # load cfg file and update the args

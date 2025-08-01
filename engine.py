@@ -109,6 +109,10 @@ def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
     resstat = {k: meter.global_avg for k, meter in metric_logger.meters.items() if meter.count > 0}
     if getattr(criterion, 'loss_weight_decay', False):
         resstat.update({f'weight_{k}': v for k,v in criterion.weight_dict.items()})
+
+    # Clear GPU memory cache to prevent memory growth
+    torch.cuda.empty_cache()
+
     return resstat
 
 
