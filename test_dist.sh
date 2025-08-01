@@ -1,7 +1,7 @@
-GPU_NUM=$1
-CFG=$2
-DATASETS=$3
-OUTPUT_DIR=$4
+GPU_NUM=1
+CFG=config/cfg_coco.py
+DATASETS=config/datasets_od_example.json
+OUTPUT_DIR=output/od_example
 NNODES=${NNODES:-1}
 NODE_RANK=${NODE_RANK:-0}
 PORT=${PORT:-29500}
@@ -12,5 +12,5 @@ python -m torch.distributed.launch  --nproc_per_node=${GPU_NUM} main.py \
         --eval \
         -c ${CFG} \
         --datasets ${DATASETS}  \
-        --pretrain_model_path /path/to/groundingdino_swint_ogc.pth \
-        --options text_encoder_type=/path/to/bert-base-uncased
+        --pretrain_model_path weights/groundingdino_swint_ogc.pth \
+        --options text_encoder_type=weights/bert

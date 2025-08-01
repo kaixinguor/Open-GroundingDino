@@ -79,8 +79,8 @@ def coco2odvg(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("coco to odvg format.", add_help=True)
-    parser.add_argument("--input", '-i', required=True, type=str, help="input list name")
-    parser.add_argument("--output", '-o', required=True, type=str, help="output list name")
+    parser.add_argument("--input", '-i', default="data/coco2017/annotations/instances_train2017.json", type=str, help="input list name")
+    parser.add_argument("--output", '-o', default="data/coco2017/coco2017_train_odvg.jsonl", type=str, help="output list name")
     parser.add_argument("--idmap", default='coco', type=str, help="if coco2017 use the coco2017 idmap, otherwise keep labels as is.")
     args = parser.parse_args()
 
